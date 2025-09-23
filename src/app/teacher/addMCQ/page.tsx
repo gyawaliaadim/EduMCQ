@@ -15,8 +15,7 @@ import {
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ITeacher } from "@/models/Teacher";
-import { ChapterItem, IChapter } from "@/models/Chapter";
+import { ChapterItem } from "@/models/Chapter";
 import { useAppData } from "@/store/DataProvider";
 export default function AddMCQ() {
 

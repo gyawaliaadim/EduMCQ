@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { TextInput, Button, Avatar, Group, Text } from "@mantine/core";
+import { TextInput, Avatar, Group, Text } from "@mantine/core";
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { useMCQ } from "@/store/MCQProvider";
-import { fetchData } from "next-auth/client/_utils";
 
 export default function StudentProfile() {
     const [name, setName] = useState("");
@@ -24,7 +23,7 @@ export default function StudentProfile() {
             cumulativeSum += score;
             return { day: idx + 1, avg: +(cumulativeSum / (idx + 1)).toFixed(2) };
         });
-        fetchStudentData(classCode ?? "")
+        fetchStudentData(classCode ?? "", false)
         setData(cumulativeData);
     }, []);
 

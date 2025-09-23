@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { TextInput, Button, Avatar, Group, Text } from "@mantine/core";
+import { TextInput, Avatar, Group, Text } from "@mantine/core";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function StudentProfile() {

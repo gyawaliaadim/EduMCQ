@@ -16,7 +16,6 @@ const Page = () => {
 
     const [chapterList, setChapterList] = useState<Record<string, ChapterItem[]>>({});
     const [selectedClass, setSelectedClass] = useState<string | null>(null);
-    const [sessionTrue, setSessionTrue] = useState(false);
 
     // Populate chapterList from context once
     const addChapters = (chaptersRaw: any[] | null, classList: string[] | null) => {
@@ -36,7 +35,7 @@ const Page = () => {
             return;
         }
         if (status == "loading" || !session) { return }
-        if (status === "authenticated" && session && !sessionTrue) {
+        if (status === "authenticated" && session) {
             addChapters(chapterDetails, teacherClassList);
         }
     }, [dataCxt]);

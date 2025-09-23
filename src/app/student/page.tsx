@@ -12,7 +12,7 @@ export default function QuizSetupPage() {
     const [selectedChapters, setSelectedChapters] = useState<string[]>([]);
     const [numMCQs, setNumMCQs] = useState<number>(5);
     const [error, setError] = useState("");
-    const { loading, classID, chaptersWithMCQs, fetchStudentData, fetchMCQs } = useMCQ()
+    const { chaptersWithMCQs, fetchMCQs } = useMCQ()
     useEffect(() => {
         fetchMCQs()
         console.log(chaptersWithMCQs)

@@ -17,7 +17,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useAppData } from "@/store/DataProvider";
 import { ChapterItem } from "@/models/Chapter";
-import { fetchData } from "next-auth/client/_utils";
 
 export default function ChapterForm() {
     const { data: session, status } = useSession();

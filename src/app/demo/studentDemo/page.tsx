@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MultiSelect, NumberInput, Button, Text, Group } from "@mantine/core";
 import { useRouter } from "next/navigation";
-import { useMCQ } from "@/store/MCQProvider";
 
 // Your data
 const chaptersWithMCQs = [

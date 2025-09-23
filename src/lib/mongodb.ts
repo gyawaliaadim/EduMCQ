@@ -3,7 +3,6 @@ import { MongoClient, MongoClientOptions } from 'mongodb';
 
 const uri: string | undefined = process.env.MONGODB_URI;
 const options: MongoClientOptions = {
-  useNewUrlParser: true,
 };
 
 let client: MongoClient;

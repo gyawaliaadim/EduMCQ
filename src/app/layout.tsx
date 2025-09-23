@@ -1,14 +1,12 @@
 
 import type { Metadata } from "next";
 import {
-    ColorSchemeScript,
     mantineHtmlProps,
     MantineProvider,
 } from "@mantine/core";
 import theme from "./theme";
 import "./globals.css";
 import SessionWrapper from "@/components/SessionWrapper";
-import { DataProvider } from "@/store/DataProvider";
 import { MCQProvider } from "@/store/MCQProvider";
 export const metadata: Metadata = {
     title: "EduMCQ",

@@ -2,16 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ITeacher } from "@/models/Teacher";
 import { useSession } from "next-auth/react";
-import { tr } from "framer-motion/client";
-import { IChapter } from "@/models/Chapter";
 import { IMCQ } from "@/models/MCQ";
-import { fetchData } from "next-auth/client/_utils";
-
-interface Chapter {
-    chapterName: string;
-    chapterId: string;
-    MCQs: IMCQ[];
-}
 
 
 interface DataContextType {

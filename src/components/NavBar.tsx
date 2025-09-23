@@ -20,8 +20,6 @@ export default function NavBar({ className }: NavBarProps) {
     const pathname = usePathname();
     const [name, setName] = useState("");
     const [sessionTrue, setSessionTrue] = useState<boolean>();
-    const { setColorScheme } = useMantineColorScheme();
-    const computed = useComputedColorScheme("light", { getInitialValueInEffect: true });
 
     useEffect(() => {
         setAuthenticated(status === "authenticated");

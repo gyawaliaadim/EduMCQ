@@ -1,7 +1,5 @@
 
 import Sidebar from "@/components/demo/SideBar";
-import Link from "next/link";
-import Image from "next/image";
 export default function Layout({ children }: { children: React.ReactNode }) {
 
 

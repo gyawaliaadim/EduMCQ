@@ -6,7 +6,6 @@ import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { ITeacher } from "@/models/Teacher";
 import { useAppData } from "@/store/DataProvider";
 export default function Drawer() {
     const pathname = usePathname();
