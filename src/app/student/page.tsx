@@ -19,7 +19,7 @@ export default function QuizSetupPage() {
     }, [])
 
     const handleStartQuiz = () => {
-        let availableMCQs = chaptersWithMCQs
+        const availableMCQs = chaptersWithMCQs
             .filter(ch => selectedChapters.includes(ch.chapterID) || selectedChapters.includes("all"))
             .flatMap(ch => ch.MCQs);
 

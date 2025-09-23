@@ -11,6 +11,7 @@ import {
     Title,
     Box,
 } from "@mantine/core";
+import { ChapterItem } from "@/models/Chapter";
 
 export default function AddMCQDemo() {
     // Mock static demo data for classes and chapters
@@ -97,7 +98,7 @@ export default function AddMCQDemo() {
                     disabled={!selectedClass}
                     data={
                         selectedClass
-                            ? demoChapterList[selectedClass]?.map((ch: any) => ({
+                            ? demoChapterList[selectedClass]?.map((ch: ChapterItem) => ({
                                 value: ch.chapterID,
                                 label: ch.chapterName,
                             })) ?? []

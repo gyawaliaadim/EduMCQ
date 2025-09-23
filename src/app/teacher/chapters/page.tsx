@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Loading from "@/app/(public)/loading";
 import { Select, Table, Stack, Text } from "@mantine/core";
-import { ChapterItem } from "@/models/Chapter";
+import { ChapterItem, IChapter } from "@/models/Chapter";
 import { useAppData } from "@/store/DataProvider";
 
 const Page = () => {
@@ -18,7 +18,7 @@ const Page = () => {
     const [selectedClass, setSelectedClass] = useState<string | null>(null);
 
     // Populate chapterList from context once
-    const addChapters = (chaptersRaw: any[] | null, classList: string[] | null) => {
+    const addChapters = (chaptersRaw: IChapter[] | null, classList: string[] | null) => {
         if (!chaptersRaw || !classList) return;
         const classItems: Record<string, ChapterItem[]> = {};
         classList.forEach((classID) => {

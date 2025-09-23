@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { ITeacher } from "@/models/Teacher";
 import { useSession } from "next-auth/react";
 import { IMCQ } from "@/models/MCQ";
+import { IChapter } from "@/models/Chapter";
 
 
 interface DataContextType {
@@ -45,7 +46,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
             const classList = teacherDetails ? ([...teacherDetails.classList].sort((a, b) => Number(a) - Number(b))) : null;
 
             const chapter = await chapterRes.json();
-            const chapterData: any[] = chapter.chapterDetails;
+            const chapterData: IChapter[] = chapter.chapterDetails;
 
             const mcq = await mcqRes.json();
             const mcqData: IMCQ[] = mcq.MCQs;

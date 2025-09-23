@@ -26,7 +26,7 @@ const ChapterSchema = new Schema<IChapter>({
     email: { type: String, required: true },
 });
 
-ChapterSchema.index({ email: 1, classID: 1 }, { unique: true });
+ChapterSchema.index({ email: 1 }, { unique: true });
 
 export default mongoose.models.Chapter ||
     model<IChapter>("Chapter", ChapterSchema);

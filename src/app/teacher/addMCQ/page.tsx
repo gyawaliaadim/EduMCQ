@@ -15,7 +15,7 @@ import {
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ChapterItem } from "@/models/Chapter";
+import { ChapterItem, IChapter } from "@/models/Chapter";
 import { useAppData } from "@/store/DataProvider";
 export default function AddMCQ() {
 
@@ -32,7 +32,7 @@ export default function AddMCQ() {
     // const [sessionTrue, setSessionTrue] = useState(false);
 
     // Mock addChapters function (replace with your fetch logic)
-    const addChapters = (chaptersRaw: any[] | null, classList: string[] | null) => {
+    const addChapters = (chaptersRaw: IChapter[] | null, classList: string[] | null) => {
         const classItems: Record<string, ChapterItem[]> = {};
         classList?.forEach((classID) => {
             const found = chaptersRaw?.find((chapterItem) => chapterItem.classID === classID);

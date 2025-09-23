@@ -2,8 +2,8 @@
 
 import connectDb from "@/db/connectDb"
 import Chapter from "@/models/Chapter";
-import Teacher from "@/models/Teacher";
-export async function GET(req: Request) {
+
+export async function GET(req) {
     try {
         await connectDb();
 
@@ -35,18 +35,21 @@ export async function GET(req: Request) {
 
 
 
-export async function POST(req: Request) {
+export async function POST(req) {
     try {
         await connectDb();
         const body = await req.json();
         const { email, classID, chapters } = body;
         console.log(body)
         // Update or create Chapter document
+
         const updatedChapter = await Chapter.findOneAndUpdate(
-            { classID, email }, // filter by className
-            { $set: body }, // update fields
-            { upsert: true, new: true } // create if not exist & return updated doc
+            { classID, email },   // filter
+            { $set: body } ,       // update
+            { upsert: true, new: true } // options
         );
+
+
         console.log("class is " + classID)
 
         return new Response(
