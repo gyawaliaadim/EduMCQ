@@ -14,29 +14,45 @@ export default function TakeQuizPage() {
     const [mcqs, setMcqs] = useState<MCQ[]>([]);
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [submitted, setSubmitted] = useState(false);
-    const router = useRouter()
+    const [timeLeft, setTimeLeft] = useState(0);
+    const router = useRouter();
+
     useEffect(() => {
         const saved = sessionStorage.getItem("quizMCQs");
-        if (saved) setMcqs(JSON.parse(saved));
+        if (saved) {
+            const parsedMCQs: MCQ[] = JSON.parse(saved);
+            setMcqs(parsedMCQs);
+            setTimeLeft(parsedMCQs.length * 5); // total time
+        }
     }, []);
 
+    // Timer effect
+    useEffect(() => {
+        if (timeLeft <= 0 && mcqs.length > 0 && !submitted) {
+            handleSubmit();
+            return;
+        }
+        const timer = setInterval(() => {
+            setTimeLeft(prev => prev - 1);
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [timeLeft, submitted, mcqs.length]);
+
     const handleAnswerChange = (mcqID: number, value: string) => {
-        setAnswers(prev => ({ ...prev, [mcqID]: value }));
+        if (!submitted && timeLeft > 0) {
+            setAnswers(prev => ({ ...prev, [mcqID]: value }));
+        }
     };
 
     const handleSubmit = () => {
         setSubmitted(true);
 
+        // unanswered are automatically wrong, no need to handle separately
         const percent = String((score * 100) / mcqs.length);
 
-        // Get existing stats from localStorage or default to an empty array
         const storedStats = localStorage.getItem("stats");
         const stats = storedStats ? JSON.parse(storedStats) : [];
-
-        // Add new percent to the stats array
         const newStats = [...stats, percent];
-
-        // Save back to localStorage
         localStorage.setItem("stats", JSON.stringify(newStats));
     };
 
@@ -48,21 +64,30 @@ export default function TakeQuizPage() {
                 Take Your Quiz
             </Text>
 
+            {/* Timer */}
+            {!submitted ? (
+                <Text className="text-center text-lg font-bold text-red-600 mb-4">
+                    Time Left: {Math.floor(timeLeft / 60)
+                        .toString()
+                        .padStart(2, "0")}:
+                    {(timeLeft % 60).toString().padStart(2, "0")}
+                </Text>
+            ) : null}
+
             {mcqs.map(mcq => (
                 <Card
                     key={mcq.mcqID}
                     shadow="md"
                     className={`
-    p-6 rounded-2xl border border-gray-200 transition-all duration-300
-    ${submitted
+                        p-6 rounded-2xl border border-gray-200 transition-all duration-300
+                        ${submitted
                             ? answers[mcq.mcqID] === mcq.correctAnswer
                                 ? "bg-green-200"
                                 : "bg-red-200"
                             : "hover:shadow-xl"
                         }
-  `}
+                    `}
                 >
-
                     <Text className="text-lg md:text-xl font-semibold mb-4 text-gray-900">
                         {mcq.question}
                     </Text>
@@ -77,7 +102,7 @@ export default function TakeQuizPage() {
                                     key={key}
                                     value={key}
                                     label={String(val ?? "")}
-                                    disabled={submitted}
+                                    disabled={submitted || timeLeft <= 0}
                                     classNames={{
                                         label: "text-gray-800 font-medium",
                                         radio: "accent-blue-500"
@@ -117,7 +142,6 @@ export default function TakeQuizPage() {
                         >
                             Try Again
                         </div>
-
                     </div>
                 )}
             </Group>

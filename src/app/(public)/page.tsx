@@ -4,7 +4,6 @@ type FeatureBoxProps = {
   heading: string;
   description: string;
 };
-
 const FeatureBox = React.memo(({ heading, description }: FeatureBoxProps) => {
   return (
     <div
@@ -52,10 +51,19 @@ const Home = () => {
             Practice makes perfect. Our MCQ system lets students sharpen skills, track progress, and reach potential. Teachers get tools that make assessment meaningful.
           </div>
         </div>
-        <div className="min-h-[100vh] w-full text-black dark:text-white flex justify-center items-center">
-          {/* Placeholder for future hero image */}
-          Image
+        <div className="min-h-[200vh] w-[95%] xs:w-[75%] flex flex-col justify-center items-center space-y-5 rounded-4xl text-black dark:text-white">
+          <img
+            alt="Features Picture 2"
+            src="/featuresPics/featuresPic2.jpg"
+            className="w-full h-auto object-cover rounded-xl"
+          />
+          <img
+            alt="Features Picture 1"
+            src="/featuresPics/featuresPic1.jpg"
+            className="w-full h-auto object-cover rounded-xl"
+          />
         </div>
+
       </div>
 
       {/* Features Section */}

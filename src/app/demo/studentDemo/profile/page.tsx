@@ -53,7 +53,7 @@ export default function StudentProfile() {
                     <TextInput
                         label="Name"
                         placeholder="Enter your name"
-                        value={name}
+                        value={name ?? ''}
                         onChange={(e) => setName(e.currentTarget.value)}
                     />
                     <Text>

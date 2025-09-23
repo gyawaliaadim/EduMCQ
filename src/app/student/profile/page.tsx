@@ -47,7 +47,7 @@ export default function StudentProfile() {
                 </Text>
                 <div className="flex justify-center">
                     <Avatar
-                        src="/assets/profile-placeholder.png" // replace with actual profile picture
+                        src="/assets/default-profile.jpg" // replace with actual profile picture
                         alt="Profile"
                         size={100}
                         radius={100}

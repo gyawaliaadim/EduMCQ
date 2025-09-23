@@ -48,9 +48,20 @@ export default function QuizSetupPage() {
 
             <MultiSelect
                 className="mt-4"
-                data={[{ value: "all", label: "All Chapters" }, ...chaptersWithMCQs.map(ch => ({ value: ch.chapterID, label: ch.chapterName }))]}
+                data={[
+                    { value: "all", label: "All Chapters" },
+                    ...chaptersWithMCQs.map(ch => ({ value: ch.chapterID, label: ch.chapterName }))
+                ]}
                 value={selectedChapters}
-                onChange={setSelectedChapters}
+                onChange={(values) => {
+                    if (values.includes("all")) {
+                        // If "All Chapters" is chosen, only keep "all"
+                        setSelectedChapters(["all"]);
+                    } else {
+                        // Otherwise, remove "all" if it was selected before
+                        setSelectedChapters(values.filter(v => v !== "all"));
+                    }
+                }}
                 placeholder="Choose chapters"
             />
 

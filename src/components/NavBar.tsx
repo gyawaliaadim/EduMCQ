@@ -39,7 +39,7 @@ export default function NavBar({ className }: NavBarProps) {
         const fetchData = async () => {
             const teacherfetchres = await fetch(`/api/teacherDetails?email=${encodeURIComponent(session?.user?.email ?? "")}`);
             const teacher = await teacherfetchres.json();
-            const teacherDetails: ITeacher = teacher.teacherDetails;
+            const teacherDetails: ITeacher = await teacher.teacherDetails;
             setName(teacherDetails.name ?? '');
         }
         fetchData()
@@ -119,8 +119,8 @@ export default function NavBar({ className }: NavBarProps) {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/teacher/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Dashboard
+                                        <Link href="/signin" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Student sign in
                                         </Link>
                                     </li>
                                     <li>

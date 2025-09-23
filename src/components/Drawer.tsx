@@ -12,7 +12,7 @@ export default function Drawer() {
     const router = useRouter();
     const { data: session, status } = useSession();
     const [name, setName] = useState('')
-    const profilePic = session?.user?.image || "/assets/default-profile.png";
+    const profilePic = session?.user?.image || "/assets/default-profile.jpg";
     const { teacherDetails, loading } = useAppData();
     const dataCxt = useAppData(); // full context dependency
 

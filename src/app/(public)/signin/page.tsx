@@ -27,7 +27,7 @@ const About = () => {
     }
     setErr("");
     console.log(text)
-    fetchStudentData(text, true)
+    await fetchStudentData(text, true)
 
 
 
