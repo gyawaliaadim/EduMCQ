@@ -51,6 +51,7 @@ export const MCQProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
             }
         } catch (err) {
+            console.log(err)
             alert("Failed to fetch class code.");
 
         } finally {
@@ -81,6 +82,7 @@ export const MCQProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             setChaptersWithMCQs(mcqsdetails.mcqs);
             setClassID(mcqsdetails.classID);
         } catch (err) {
+            console.log(err)
             alert("Error fetching mcqs.");
         } finally {
             setLoading(false);

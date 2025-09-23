@@ -11,7 +11,7 @@ export default function TeacherForm() {
     const { data: session, status } = useSession();
     const router = useRouter();
 
-    const { teacherDetails, teacherClassList, chapterDetails, MCQData, loading, fetchData } = useAppData();
+    const { teacherDetails, loading, fetchData } = useAppData();
     const dataCxt = useAppData(); // full context dependency
 
     const [name, setName] = useState<string>("");

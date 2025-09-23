@@ -6,7 +6,7 @@ import { IClassCode } from "@/models/Teacher";
 
 async function generateUniqueClassCode() {
     let code;
-    let exists: string | null | true = true;
+    let exists= true;
     while (exists) {
         code = Math.random().toString(36).substring(2, 8); // 6-character code
         exists = await Teacher.findOne({ "classCodeList.classCode": code });
@@ -15,7 +15,7 @@ async function generateUniqueClassCode() {
 }
 
 
-export async function GET(req: Request) {
+export async function GET(req) {
     try {
         await connectDb();
 
@@ -50,7 +50,7 @@ export async function GET(req: Request) {
             { status: 500 }
         );
     }
-} export async function POST(req: Request) {
+} export async function POST(req) {
     try {
         await connectDb();
         const body = await req.json();
@@ -76,14 +76,14 @@ export async function GET(req: Request) {
         }
 
         // Remove any classCodeList items not present in the new classList
-        let updatedClassCodeList = (teacher.classCodeList ?? []).filter((c: IClassCode) =>
+        const updatedClassCodeList = (teacher.classCodeList ?? []).filter((c) =>
             body.classList.includes(c.classID)
         );
         console.log("updatedClassList", updatedClassCodeList);
 
         // Add new codes for classes in the new list that don't have a code yet
         for (const cls of body.classList) {
-            if (!updatedClassCodeList.find((c: IClassCode) => c.classID === cls)) {
+            if (!updatedClassCodeList.find((c) => c.classID === cls)) {
                 const newCode = await generateUniqueClassCode();
                 updatedClassCodeList.push({ classID: cls, classCode: newCode });
             }

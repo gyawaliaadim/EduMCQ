@@ -1,10 +1,6 @@
 "use client"
 
-import { useSession, signIn, signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation';
-import React, { useEffect } from "react";
-import Image from "next/image";
-import { useComputedColorScheme } from "@mantine/core";
+import React from "react";
 import { TextInput } from '@mantine/core';
 import { useState } from 'react';
 import { Button } from '@mantine/core';
@@ -14,9 +10,7 @@ import { useMCQ } from '@/store/MCQProvider';
 const About = () => {
   const [err, setErr] = useState<string>('')
   const [value, setValue] = useState<string>('')
-  const { data: session, status } = useSession()
-  const router = useRouter();
-  const { loading, classID, chaptersWithMCQs, fetchStudentData, fetchMCQs } = useMCQ()
+  const { loading, fetchStudentData } = useMCQ()
 
 
   const handleSubmit = async (e: React.FormEvent) => {

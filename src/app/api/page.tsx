@@ -6,7 +6,7 @@ const API = () => {
     useEffect(() => {
         alert("This route isn't meant for accessing with GET.")
         router.push('/')
-    }, [])
+    }, [router])
 
     return (
         <div></div>

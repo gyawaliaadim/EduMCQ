@@ -1,7 +1,7 @@
 import connectDb from "@/db/connectDb";
-import Teacher, { IClassCode } from "@/models/Teacher";
+import Teacher from "@/models/Teacher";
 
-export async function GET(req: Request) {
+export async function GET(req) {
     try {
         await connectDb();
         const { searchParams } = new URL(req.url);
@@ -25,7 +25,7 @@ export async function GET(req: Request) {
         }
 
         // Get the classID corresponding to the given classCode
-        const classItem = teacher.classCodeList.find((c: IClassCode) => c.classCode === classCode);
+        const classItem = teacher.classCodeList.find((c) => c.classCode === classCode);
         const classID = classItem?.classID ?? null;
         console.log("fetched data sucessfully", classID)
 

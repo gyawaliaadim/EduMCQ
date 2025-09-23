@@ -66,7 +66,7 @@ const Page = () => {
 
             setMCQsMap(result);
         }
-    }, [status, session, MCQData, chapterDetails, teacherDetails]);
+    }, [status, session, MCQData, chapterDetails, teacherDetails, router]);
 
     useEffect(() => {
         if (selectedClass && selectedClass !== "all") {

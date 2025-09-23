@@ -7,7 +7,7 @@ export interface IMCQ extends Document {
     options: { A: string; B: string; C: string; D: string };
     correctAnswer: "A" | "B" | "C" | "D";
     classID: string;
-    mcqID: Number
+    mcqID: number
 }
 
 const MCQSchema = new Schema<IMCQ>({

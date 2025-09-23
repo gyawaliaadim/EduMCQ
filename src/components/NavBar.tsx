@@ -5,7 +5,6 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
-import { useMantineColorScheme, useComputedColorScheme } from "@mantine/core";
 import { ITeacher } from "@/models/Teacher";
 
 interface NavBarProps {
@@ -54,7 +53,6 @@ export default function NavBar({ className }: NavBarProps) {
 
     const profileName = name != "" ? name : session?.user?.name;
     const profilePic = session?.user?.image || "/assets/default-profile.jpg";
-    const username = session?.user?.name?.toLowerCase().replace(/\s+/g, "") || "user";
 
     return (
         <nav className={`sticky top-0 z-50 flex w-full justify-around text-black dark:text-white bg-white dark:bg-black p-2 xs:p-5 shadow-2xl dark:shadow-2xl shadow-yellow-200 dark:shadow-gray-700 ${className}`}>

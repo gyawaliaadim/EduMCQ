@@ -7,8 +7,7 @@ import { useAppData } from "@/store/DataProvider";
 const Page = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
-    const { teacherDetails, teacherClassList, chapterDetails, MCQData, loading } =
-        useAppData();
+    const { teacherDetails, loading } = useAppData();
     const dataCxt = useAppData(); // full context for effect dependency
 
     const [name, setName] = useState("");

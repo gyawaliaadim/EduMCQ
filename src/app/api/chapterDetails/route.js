@@ -39,7 +39,7 @@ export async function POST(req) {
     try {
         await connectDb();
         const body = await req.json();
-        const { email, classID, chapters } = body;
+        const { email, classID } = body;
         console.log(body)
         // Update or create Chapter document
 

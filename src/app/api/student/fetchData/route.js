@@ -1,9 +1,9 @@
 import connectDb from "@/db/connectDb";
-import Chapter, { ChapterItem, IChapter } from "@/models/Chapter";
+import Chapter from "@/models/Chapter";
 import MCQ from "@/models/MCQ";
-import Teacher, { IClassCode } from "@/models/Teacher";
+import Teacher from "@/models/Teacher";
 
-export async function GET(req: Request) {
+export async function GET(req) {
     try {
         await connectDb();
         const { searchParams } = new URL(req.url);
@@ -14,16 +14,16 @@ export async function GET(req: Request) {
         const teacher = await Teacher.findOne({ "classCodeList.classCode": classCode });
         if (!teacher) return new Response(JSON.stringify({ success: false, message: "Invalid class code" }), { status: 404 });
 
-        const classObj = teacher.classCodeList.find((c: IClassCode) => c.classCode === classCode);
+        const classObj = teacher.classCodeList.find((c) => c.classCode === classCode);
         const classID = classObj?.classID;
         const teacherEmail = teacher.email;
 
-        const chapterDoc = await Chapter.findOne({ email: teacherEmail, classID }).lean<IChapter>();
+        const chapterDoc = await Chapter.findOne({ email: teacherEmail, classID }).lean();
 
         const mcqs = await MCQ.find({ email: teacherEmail, classID }).lean();
 
         // 3️⃣ Map MCQs to their chapters
-        const result = chapterDoc?.chapters.map((chapter: ChapterItem) => {
+        const result = chapterDoc?.chapters.map((chapter) => {
             const chapterMCQs = mcqs
                 .filter(mcq => mcq.chapterID === chapter.chapterID)
                 .map(mcq => ({

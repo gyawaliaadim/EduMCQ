@@ -2,7 +2,7 @@
 
 import connectDb from "@/db/connectDb"
 import MCQ from "@/models/MCQ";
-export async function GET(req: Request) {
+export async function GET(req) {
     try {
         await connectDb();
 
@@ -32,7 +32,7 @@ export async function GET(req: Request) {
     }
 }
 
-export async function POST(req: Request) {
+export async function POST(req) {
     try {
         await connectDb();
         const body = await req.json();

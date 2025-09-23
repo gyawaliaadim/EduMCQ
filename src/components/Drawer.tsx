@@ -13,7 +13,7 @@ export default function Drawer() {
     const { data: session, status } = useSession();
     const [name, setName] = useState('')
     const profilePic = session?.user?.image || "/assets/default-profile.png";
-    const { teacherDetails, teacherClassList, chapterDetails, MCQData, loading } = useAppData();
+    const { teacherDetails, loading } = useAppData();
     const dataCxt = useAppData(); // full context dependency
 
 

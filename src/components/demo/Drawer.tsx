@@ -8,7 +8,7 @@ import { useState } from "react";
 export default function Drawer() {
     const pathname = usePathname();
     const router = useRouter();
-    const [name, setName] = useState('Aadim Gyawali')
+    const name = "Aadim Gyawali"
     const profilePic = "/assets/default-profile.jpg";
 
 

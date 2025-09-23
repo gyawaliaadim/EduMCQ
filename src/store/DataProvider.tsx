@@ -9,7 +9,7 @@ import { IChapter } from "@/models/Chapter";
 interface DataContextType {
     teacherDetails: ITeacher | null;
     teacherClassList: string[] | null;
-    chapterDetails: any[] | null;
+    chapterDetails: IChapter[] | null;
     MCQData: IMCQ[] | null;
     loading: boolean;
     fetchData: () => Promise<void>;
@@ -19,7 +19,7 @@ const DataContext = createContext<DataContextType | null>(null);
 
 export function DataProvider({ children }: { children: React.ReactNode }) {
     const [teacherClassList, setTeacherClassList] = useState<string[] | null>(null);
-    const [chapterDetails, setChapterDetails] = useState<any[] | null>(null);
+    const [chapterDetails, setChapterDetails] = useState<IChapter[] | null>(null);
     const [MCQData, setMCQData] = useState<IMCQ[] | null>(null);
     const [loading, setLoading] = useState<true | false>(true);
     const { data: session, status } = useSession();

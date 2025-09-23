@@ -26,7 +26,7 @@ export default function AddMCQ() {
     const [correctAnswer, setCorrectAnswer] = useState<"A" | "B" | "C" | "D">("A");
     const router = useRouter();
     const { data: session, status } = useSession();
-    const { teacherDetails, teacherClassList, chapterDetails, MCQData, loading, fetchData } = useAppData();
+    const { teacherClassList, chapterDetails, loading, fetchData } = useAppData();
     const dataCxt = useAppData();
     const [chapterList, setChapterList] = useState<Record<string, ChapterItem[]>>({});
     // const [sessionTrue, setSessionTrue] = useState(false);

@@ -1,22 +1,19 @@
 "use client"
 
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession, signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from "react";
 import Image from "next/image";
-import { useComputedColorScheme } from "@mantine/core";
 import Link from 'next/link';
 
-const teacherSignIn = () => {
-  const computed = useComputedColorScheme("light", { getInitialValueInEffect: true });
-
+const TeacherSignIn = () => {
   const { data: session, status } = useSession()
   const router = useRouter();
   useEffect(() => {
-    if (status == "authenticated") {
+    if (status == "authenticated" && session) {
       router.push("/teacher/profile")
     }
-  }, [status])
+  }, [status, router])
 
 
   return (
@@ -60,4 +57,4 @@ const teacherSignIn = () => {
   );
 };
 
-export default teacherSignIn;
+export default TeacherSignIn;

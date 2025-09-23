@@ -11,7 +11,7 @@ const Page = () => {
     const router = useRouter();
     const { data: session, status } = useSession();
 
-    const { teacherDetails, teacherClassList, chapterDetails, MCQData, loading } = useAppData();
+    const { chapterDetails, loading, teacherClassList } = useAppData();
     const dataCxt = useAppData(); // dependency for context updates
 
     const [chapterList, setChapterList] = useState<Record<string, ChapterItem[]>>({});
