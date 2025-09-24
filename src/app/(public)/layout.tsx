@@ -11,8 +11,8 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Loading from "@/app/(public)/loading";
 export const metadata: Metadata = {
-  title: "Class Connect",
-  description: "Next App Mantine Tailwind Template",
+  title: "EduMCQ",
+  description: "EduMCQ: Interactive quiz platform for students and teacher with chapter selection, timed MCQs, and instant score feedback.",
 };
 
 export default function Layout({
