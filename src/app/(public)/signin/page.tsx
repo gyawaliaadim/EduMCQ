@@ -68,7 +68,7 @@ const About = () => {
             <Button variant="filled" color="indigo" radius="xl"
               onClick={handleSubmit}
 
-            >Button</Button>
+            >Join</Button>
             {/* Social Links */}
             <Link href={'/teacherSignin'}
               className='text-blue-400 underline'>I'm Teacher</Link>
